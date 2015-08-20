@@ -41,12 +41,14 @@
     "validate.io-string-primitive": "^1.0.0"
   },
   "devDependencies": {
+    "@kgryte/noop": "^1.0.0",
     "chai": "3.x.x",
     "codecov.io": "^0.1.5",
     "istanbul": "^0.3.0",
     "jshint": "2.x.x",
     "jshint-stylish": "2.x.x",
-    "mocha": "2.x.x"
+    "mocha": "2.x.x",
+    "proxyquire": "^1.7.0"
   },
   "license": "MIT"
 }
