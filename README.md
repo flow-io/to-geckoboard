@@ -110,7 +110,7 @@ var data = {
 	}
 };
 
-var oStream = stream.objectMode( opts )
+var oStream = stream.objectMode( opts );
 oStream.write( data );
 oStream.end();
 ```
