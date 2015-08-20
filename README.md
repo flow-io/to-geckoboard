@@ -37,7 +37,7 @@ var data = {
 		'value': 0
 	},
 	'max': {
-		'value': 1
+		'value': 100
 	}
 };
 
@@ -106,7 +106,7 @@ var data = {
 		'value': 0
 	},
 	'max': {
-		'value': 1
+		'value': 100
 	}
 };
 
