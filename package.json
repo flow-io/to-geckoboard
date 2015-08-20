@@ -25,7 +25,26 @@
     "type": "git",
     "url": "git://github.com/flow-io/to-geckoboard.git"
   },
-  "keywords": [],
+  "keywords": [
+  	"flow-io",
+  	"flow.io",
+  	"flow",
+  	"stream",
+  	"streams",
+  	"writable",
+  	"writestream",
+  	"sink",
+  	"to",
+  	"geckoboard",
+  	"push",
+  	"visualize",
+  	"chart",
+  	"charts",
+  	"graph",
+  	"dashboard",
+  	"widget",
+  	"push"
+  ],
   "bugs": {
     "url": "https://github.com/flow-io/to-geckoboard/issues"
   },
