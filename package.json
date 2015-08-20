@@ -1,6 +1,6 @@
 {
   "name": "flow-to-geckoboard",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Creates a writable stream for pushing data to Geckoboard.",
   "author": {
     "name": "Athan Reines",
@@ -26,24 +26,24 @@
     "url": "git://github.com/flow-io/to-geckoboard.git"
   },
   "keywords": [
-  	"flow-io",
-  	"flow.io",
-  	"flow",
-  	"stream",
-  	"streams",
-  	"writable",
-  	"writestream",
-  	"sink",
-  	"to",
-  	"geckoboard",
-  	"push",
-  	"visualize",
-  	"chart",
-  	"charts",
-  	"graph",
-  	"dashboard",
-  	"widget",
-  	"push"
+    "flow-io",
+    "flow.io",
+    "flow",
+    "stream",
+    "streams",
+    "writable",
+    "writestream",
+    "sink",
+    "to",
+    "geckoboard",
+    "push",
+    "visualize",
+    "chart",
+    "charts",
+    "graph",
+    "dashboard",
+    "widget",
+    "push"
   ],
   "bugs": {
     "url": "https://github.com/flow-io/to-geckoboard/issues"
