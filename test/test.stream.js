@@ -1,15 +1,12 @@
 /* global require, describe, it */
 'use strict';
 
-var mpath = './../lib/stream.js';
-
-
 // MODULES //
 
 var chai = require( 'chai' ),
 	Writable = require( 'readable-stream' ).Writable,
-	proxyquire = require( 'proxyquire' ),
-	Stream = require( mpath );
+	nock = require( 'nock' ),
+	Stream = require( './../lib/stream.js' );
 
 
 // VARIABLES //
@@ -61,25 +58,20 @@ describe( 'Stream', function tests() {
 	});
 
 	it( 'should post data to a remote endpoint', function test( done ) {
-		var stream,
-			data,
+		var data,
 			s;
-
-		stream = proxyquire( mpath, {
-			'./post.js': post
-		});
 
 		data = {'beep':'boop'};
 
-		s = stream( opts );
-		s.write( JSON.stringify( data ), done );
+		nock( 'https://push.geckoboard.com' )
+			.post( '/v1/send/'+opts.widget, {
+				'api_key': opts.key,
+				'data': data
+			})
+			.reply( 200 );
 
-		function post() {
-			return function post( d, clbk ) {
-				assert.deepEqual( d, data );
-				clbk();
-			};
-		}
+		s = new Stream( opts );
+		s.write( JSON.stringify( data ), done );
 	});
 
 	it( 'should provide a method to destroy a stream', function test( done ) {
