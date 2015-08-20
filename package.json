@@ -23,11 +23,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/kgryte/flow-to-geckoboard.git"
+    "url": "git://github.com/flow-io/to-geckoboard.git"
   },
   "keywords": [],
   "bugs": {
-    "url": "https://github.com/kgryte/flow-to-geckoboard/issues"
+    "url": "https://github.com/flow-io/to-geckoboard/issues"
   },
   "dependencies": {
     "minimist": "^1.1.3",
