@@ -1,6 +1,6 @@
 {
   "name": "flow-to-geckoboard",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Creates a writable stream for pushing data to Geckoboard.",
   "author": {
     "name": "Athan Reines",
