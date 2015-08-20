@@ -1,0 +1,5 @@
+{
+	"objectMode": false,
+	"decodeStrings": true,
+	"highWaterMark": 16
+}

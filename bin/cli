@@ -1,0 +1,120 @@
+#!/usr/bin/env node
+'use strict';
+
+// MODULES //
+
+var fs = require( 'fs' ),
+	path = require( 'path' ),
+	pkginfo = require( 'pkginfo' ),
+	parseArgs = require( 'minimist' ),
+	opts = require( './opts.json' ),
+	Stream = require( './../lib' );
+
+
+// VARIABLES //
+
+var args,
+	pkg;
+
+
+// FUNCTIONS //
+
+/**
+* FUNCTION: onClose()
+*	Callback invoked upon writing a file to `stdout`.
+*
+* @private
+*/
+function onClose() {
+	process.exit( 1 );
+}
+
+/**
+* FUNCTION: onError( evt )
+*	Event listener invoked when a stream instance emits an `error`.
+*
+* @private
+* @param {Object} evt - error event object
+*/
+function onError( evt ) {
+	console.error( evt );
+}
+
+
+// INIT //
+
+process.stdout.on( 'error', process.exit );
+
+
+// PACKAGE INFO //
+
+pkg = pkginfo.read( require.main );
+process.title = pkg.package.name;
+
+
+// ARGUMENTS //
+
+args = parseArgs( process.argv.slice( 2 ), opts );
+
+
+// HELP //
+
+if ( args.help ) {
+	fs.createReadStream( path.join( __dirname, 'usage.txt' ) )
+		.pipe( process.stdout )
+		.on( 'close', onClose );
+    return;
+}
+
+
+// VERSION //
+
+if ( args.version ) {
+	console.log( require( './../package.json' ).version );
+	return;
+}
+
+
+// OPTIONS //
+
+opts = {};
+
+// API key:
+if ( args.key ) {
+	opts.key = args.key;
+} else if ( process.env.GECKOBOARD_API_KEY ) {
+	opts.key = process.env.GECKOBOARD_API_KEY;
+}
+
+// Widget id:
+if ( args.widget ) {
+	opts.widget = args.widget;
+} else if ( process.env.GECKOBOARD_WIDGET_ID ) {
+	opts.widget = process.env.GECKOBOARD_WIDGET_ID;
+}
+
+// highWaterMark: (default: 16kb)
+if ( args.hasOwnProperty( 'highwatermark' ) ) {
+	opts.highWaterMark = args.highwatermark;
+}
+
+// decodeStrings: (default: true)
+if ( args[ 'no-decodestrings' ] ) {
+	opts.decodeStrings = false;
+}
+
+// objectMode: (default: false)
+if ( args.objectmode ) {
+	opts.objectMode = true;
+}
+
+
+// STREAM //
+
+var oStream = new Stream( opts );
+
+// Add event listeners:
+oStream.on( 'error', onError );
+
+// Create the pipeline:
+process.stdin.pipe( oStream );

@@ -1,0 +1,29 @@
+{
+	"string": [
+		"key",
+		"widget"
+	],
+	"boolean": [
+		"help",
+		"version",
+		"objectmode",
+		"no-decodestrings"
+	],
+	"alias": {
+		"help": [
+			"h"
+		],
+		"version": [
+			"V"
+		],
+		"highwatermark": [
+			"hwm"
+		],
+		"objectmode": [
+			"om"
+		],
+		"no-decodestrings": [
+			"nds"
+		]
+	}
+}

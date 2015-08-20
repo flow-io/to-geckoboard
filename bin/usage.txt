@@ -1,0 +1,15 @@
+
+Usage: flow-to-geckoboard --key <key> --widget <widget_id> [options]
+
+Options:
+
+  -h,   --help                 Print this message.
+  -V,   --version              Print the package version.
+        --key [key]            Geckoboard API key.
+        --widget [widget]      Geckoboard widget id.
+  -hwm, --highwatermark [hwm]  Specify how much data can be buffered into memory
+                               before applying back pressure. Default: 16kb.
+  -nds, --no-decodestrings     Prevent strings from being converted into buffers
+                               before streaming to destination. Default: false.
+  -om,  --objectmode           Write any value rather than only buffers and strings.
+                               Default: false.
