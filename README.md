@@ -120,7 +120,7 @@ oStream.end();
 ## Examples
 
 ``` javascript
-var Stream = require( './../lib' );
+var Stream = require( 'flow-to-geckoboard' );
 
 var oStream,
 	data,
