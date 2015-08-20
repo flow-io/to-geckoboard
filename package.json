@@ -48,8 +48,7 @@
     "jshint": "2.x.x",
     "jshint-stylish": "2.x.x",
     "mocha": "2.x.x",
-    "nock": "^2.10.0",
-    "proxyquire": "^1.7.0"
+    "nock": "^2.10.0"
   },
   "license": "MIT"
 }

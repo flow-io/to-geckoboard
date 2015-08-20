@@ -1,14 +1,11 @@
 /* global require, describe, it */
 'use strict';
 
-var mpath = './../lib/post.js';
-
-
 // MODULES //
 
 var chai = require( 'chai' ),
-	proxyquire = require( 'proxyquire' ),
-	post = require( mpath );
+	nock = require( 'nock' ),
+	post = require( './../lib/post.js' );
 
 
 // VARIABLES //
@@ -35,27 +32,22 @@ describe( 'post', function tests() {
 	});
 
 	it( 'should post data to a remote endpoint and invoke a provided callback', function test( done ) {
-		var post,
-			data,
+		var data,
 			req;
-
-		post = proxyquire( mpath, {
-			'request': request
-		});
 
 		data = {
 			'beep': 'boop'
 		};
 
+		nock( 'https://push.geckoboard.com' )
+			.post( '/v1/send/'+opts.widget, {
+				'api_key': opts.key,
+				'data': data
+			})
+			.reply( 200 );
+
 		req = post( opts );
 		req( data, done );
-
-		function request( options, clbk ) {
-			var response = {
-				'statusCode': 200
-			};
-			clbk( null, response, '' );
-		}
 	});
 
 });
