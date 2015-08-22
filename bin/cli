@@ -93,7 +93,7 @@ if ( args.widget ) {
 	opts.widget = process.env.GECKOBOARD_WIDGET_ID;
 }
 
-// highWaterMark: (default: 16kb)
+// highWaterMark: (default: 16KB)
 if ( args.hasOwnProperty( 'highwatermark' ) ) {
 	opts.highWaterMark = args.highwatermark;
 }
