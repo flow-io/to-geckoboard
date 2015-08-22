@@ -52,7 +52,7 @@ The function accepts the following options:
 
 *	__objectMode__: `boolean` which specifies whether a [stream](https://nodejs.org/api/stream.html) should operate in object mode. Default: `false`.
 *	__decodeStrings__: `boolean` which specifies whether written `strings` should be decoded into `Buffer` objects. Default: `true`.
-*	__highWaterMark__: specifies the `Buffer` level at which `write()` calls start returning `false`. Default: `16` (16kb).
+*	__highWaterMark__: specifies the `Buffer` level at which `write()` calls start returning `false`. Default: `16` (16KB).
 
 To set [stream](https://nodejs.org/api/stream.html) `options`,
 
@@ -191,7 +191,7 @@ Options:
         --key [key]            Geckoboard API key.
         --widget [widget]      Geckoboard widget id.
   -hwm, --highwatermark [hwm]  Specify how much data can be buffered into memory
-                               before applying back pressure. Default: 16kb.
+                               before applying back pressure. Default: 16KB.
   -nds, --no-decodestrings     Prevent strings from being converted into buffers
                                before streaming to destination. Default: false.
   -om,  --objectmode           Write any value rather than only buffers and strings.
