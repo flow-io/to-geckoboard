@@ -72,7 +72,7 @@ var oStream = stream( opts );
 
 #### stream.factory( options )
 
-Returns a reusable [stream](https://nodejs.org/api/stream.html) factory. The factory method ensures [streams](https://nodejs.org/api/stream.html) are configured identically by using the same set of provided `options`.
+Creates a reusable [stream](https://nodejs.org/api/stream.html) factory. The factory method ensures [streams](https://nodejs.org/api/stream.html) are configured identically by using the same set of provided `options`.
 
 ``` javascript
 var opts = {
