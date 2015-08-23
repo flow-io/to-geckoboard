@@ -57,6 +57,14 @@ describe( 'Stream', function tests() {
 		assert.instanceOf( s, Writable );
 	});
 
+	it( 'should not require the `new` operator', function test() {
+		var stream = Stream,
+			s;
+
+		s = stream( opts );
+		assert.instanceOf( s, Writable );
+	});
+
 	it( 'should post data to a remote endpoint', function test( done ) {
 		var data,
 			s;
@@ -72,6 +80,55 @@ describe( 'Stream', function tests() {
 
 		s = new Stream( opts );
 		s.write( JSON.stringify( data ), done );
+		s.end();
+	});
+
+	it( 'should emit an error if unable to parse a buffer chunk as JSON', function test( done ) {
+		var data,
+			s;
+
+		data = '{"beep:"boop"}';
+
+		s = new Stream( opts );
+		s.on( 'error', onError );
+
+		s.write( data );
+		s.end();
+
+		function onError( err ) {
+			if ( err ) {
+				assert.ok( true );
+			} else {
+				assert.ok( false );
+			}
+			done();
+		}
+	});
+
+	it( 'should emit an error if unable to parse a string chunk as JSON', function test( done ) {
+		var data,
+			s;
+
+		data = '{"beep:"boop"}';
+
+		s = new Stream({
+			'key': opts.key,
+			'widget': opts.widget,
+			'decodeStrings': false
+		});
+		s.on( 'error', onError );
+
+		s.write( data, 'utf8' );
+		s.end();
+
+		function onError( err ) {
+			if ( err ) {
+				assert.ok( true );
+			} else {
+				assert.ok( false );
+			}
+			done();
+		}
 	});
 
 	it( 'should provide a method to destroy a stream', function test( done ) {

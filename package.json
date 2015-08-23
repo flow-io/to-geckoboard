@@ -54,6 +54,7 @@
     "readable-stream": "^2.0.2",
     "request": "^2.61.0",
     "utils-copy": "^1.0.0",
+    "utils-json-parse": "^1.0.0",
     "validate.io-boolean-primitive": "^1.0.0",
     "validate.io-nonnegative": "^1.0.0",
     "validate.io-object": "^1.0.4",
