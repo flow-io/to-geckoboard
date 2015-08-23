@@ -219,7 +219,7 @@ $ echo '{"item":50,"min":{"value":0},"max":{"value":100}}' | flow-to-geckboard -
 Setting credentials using environment variables:
 
 ``` bash
-$ GECKOBOARD_API_KEY=<key> GECKOBOARD_WIDGET_ID=<widget_id> echo '{"item":67,"min":{"value":0},"max":{"value":100}}' | flow-to-geckboard --key <key> --widget <widget_id>
+$ GECKOBOARD_API_KEY=<key> GECKOBOARD_WIDGET_ID=<widget_id> echo '{"item":67,"min":{"value":0},"max":{"value":100}}' | flow-to-geckboard
 ```
 
 For local installations, modify the above command to point to the local installation directory; e.g., 
