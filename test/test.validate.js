@@ -146,30 +146,6 @@ describe( 'validate', function tests() {
 		}
 	});
 
-	it( 'should return an error if provided a decode strings option which is not a boolean primitive', function test() {
-		var values, err;
-
-		values = [
-			5,
-			'5',
-			undefined,
-			null,
-			NaN,
-			[],
-			{},
-			function(){}
-		];
-
-		for ( var i = 0; i < values.length; i++ ) {
-			err = validate( {}, {
-				'key': '1234',
-				'widget': '1234',
-				'decodeStrings': values[ i ]
-			});
-			assert.isTrue( err instanceof TypeError );
-		}
-	});
-
 	it( 'should return an error if provided a high water mark option which is not a nonnegative number', function test() {
 		var values, err;
 
@@ -194,6 +170,30 @@ describe( 'validate', function tests() {
 		}
 	});
 
+	it( 'should return an error if provided an `allowHalfOpen` option which is not a boolean primitive', function test() {
+		var values, err;
+
+		values = [
+			5,
+			'5',
+			undefined,
+			null,
+			NaN,
+			[],
+			{},
+			function(){}
+		];
+
+		for ( var i = 0; i < values.length; i++ ) {
+			err = validate( {}, {
+				'key': '1234',
+				'widget': '1234',
+				'allowHalfOpen': values[ i ]
+			});
+			assert.isTrue( err instanceof TypeError );
+		}
+	});
+
 	it( 'should return null if all options are valid', function test() {
 		var err;
 
@@ -201,8 +201,8 @@ describe( 'validate', function tests() {
 			'key': '1234',
 			'widget': '5678',
 			'objectMode': true,
-			'decodeStrings': false,
-			'highWaterMark': 64
+			'highWaterMark': 64,
+			'allowHalfOpen': true
 		});
 
 		assert.isNull( err );

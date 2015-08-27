@@ -1,5 +1,5 @@
 {
 	"objectMode": false,
-	"decodeStrings": true,
-	"highWaterMark": 16
+	"highWaterMark": 16,
+	"allowHalfOpen": false
 }

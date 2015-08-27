@@ -1,13 +1,15 @@
 {
 	"string": [
 		"key",
-		"widget"
+		"widget",
+		"highwatermark",
+		"split"
 	],
 	"boolean": [
 		"help",
 		"version",
 		"objectmode",
-		"no-decodestrings"
+		"allowhalfopen"
 	],
 	"alias": {
 		"help": [
@@ -22,8 +24,8 @@
 		"objectmode": [
 			"om"
 		],
-		"no-decodestrings": [
-			"nds"
+		"allowhalfopen": [
+			"aho"
 		]
 	}
 }

@@ -7,13 +7,18 @@ var fs = require( 'fs' ),
 	path = require( 'path' ),
 	pkginfo = require( 'pkginfo' ),
 	parseArgs = require( 'minimist' ),
+	splitStream = require( 'flow-split' ),
+	regex = require( 'utils-regex-from-string' ),
 	opts = require( './opts.json' ),
 	Stream = require( './../lib' );
 
 
 // VARIABLES //
 
-var args,
+var sStream,
+	oStream,
+	ssep,
+	args,
 	pkg;
 
 
@@ -93,28 +98,48 @@ if ( args.widget ) {
 	opts.widget = process.env.GECKOBOARD_WIDGET_ID;
 }
 
+// Split separator:
+if ( args.split ) {
+	ssep = regex( args.split );
+	if ( ssep === null ) {
+		ssep = args.split;
+	}
+} else {
+	ssep = /\r?\n/;
+}
+
 // highWaterMark: (default: 16KB)
 if ( args.hasOwnProperty( 'highwatermark' ) ) {
 	opts.highWaterMark = args.highwatermark;
 }
 
-// decodeStrings: (default: true)
-if ( args[ 'no-decodestrings' ] ) {
-	opts.decodeStrings = false;
-}
-
 // objectMode: (default: false)
 if ( args.objectmode ) {
-	opts.objectMode = true;
+	opts.objectMode = false;
+}
+
+// allowHalfOpen: (default: false)
+if ( args.allowhalfopen ) {
+	opts.allowHalfOpen = true;
 }
 
 
 // STREAM //
 
-var oStream = new Stream( opts );
+// Create a new split stream:
+sStream = splitStream({
+	'sep': ssep
+});
+
+// Create a new write (out) stream:
+oStream = new Stream( opts );
 
 // Add event listeners:
+sStream.on( 'error', onError );
 oStream.on( 'error', onError );
 
 // Create the pipeline:
-process.stdin.pipe( oStream );
+process.stdin
+	.pipe( sStream )
+	.pipe( oStream )
+	.pipe( process.stdout );

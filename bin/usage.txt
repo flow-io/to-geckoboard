@@ -7,9 +7,10 @@ Options:
   -V,   --version              Print the package version.
         --key [key]            Geckoboard API key.
         --widget [widget]      Geckoboard widget id.
+        --split [sep]          Separator used to split incoming data. Default: '/\\r?\\n/'.
   -hwm, --highwatermark [hwm]  Specify how much data can be buffered into memory
                                before applying back pressure. Default: 16KB.
-  -nds, --no-decodestrings     Prevent strings from being converted into buffers
-                               before streaming to destination. Default: false.
   -om,  --objectmode           Write any value rather than only buffers and strings.
                                Default: false.
+  -aho, --allowhalfopen        Keep the stream open if either the readable or writable
+                               side ends. Default: false.
