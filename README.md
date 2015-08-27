@@ -123,7 +123,7 @@ gStream.end();
 
 ## Notes
 
-*	The [stream](https://nodejs.org/api/stream.html) output consists of newline delimited `JSON`, where each `object` indicates either a success or error response when attempting write to [Geckoboard](https://www.geckoboard.com/). For example,
+*	The [stream](https://nodejs.org/api/stream.html) output consists of newline delimited `JSON`, where each `object` indicates a success or error response when writing to [Geckoboard](https://www.geckoboard.com/). For example,
 
 	``` bash
 	...
